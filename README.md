@@ -1,6 +1,8 @@
 # Fraisdujardin.top or homegrown.top
 
-This project is build out of the need to build an application to streamline and in a way automate the selling of extra vegetables in my garden to neighbours, friends and collegues
+This project is build out of the need to build an application to streamline and in a way automate the selling of extra vegetables in my garden to neighbours, friends and collegues.
+
+The basis of this application is the e-commerce tutorial by [envatotuts+][1]
 
 Version 1:
 --------
@@ -23,7 +25,7 @@ Version 6:
 ----------
 	- Let users vote what to plant in certain beds
 
-
+[1]: tutsplus.com
 
 
 <!-- ---------- Future ref -------------
