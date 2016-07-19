@@ -1,0 +1,17 @@
+%div.pull-left
+  %h1= @product.name
+  %p
+    %strong Description:
+    = @product.description
+  %p= number_to_currency(@product.price, unit: '€ ')
+  %p 
+    Quantity:
+    = @product.quantity
+
+  %p=link_to "Add to cart", add_cart_path, method: :post, class: "btn btn-primary"
+  -if current_user && current_user.admin?
+    %p
+      = link_to 'Edit', edit_product_path(@product), class: "btn btn-primary pull-left"
+    
+      = link_to 'Back', products_path, class: "btn btn-primary pull-left"
+%p= image_tag @product.image, class: "pull-right", height: 300

@@ -1,0 +1,13 @@
+Bonjour <%= @order.user.name %>,
+
+Votre réservation a été <%= @order.state %>
+
+Vous pouvez venir le chercher à partir de 9h du matin
+
+En desous vous trouvez les produits préparée pour vous:
+
+<%- @order.order_items.each do |item| %>
+	* <%= item.quantity %> <%= item.product.name %> (<%= number_to_currency(item.total_price, unit: '€ ') %>)
+<%- end %>
+
+Le total pour la réservation: <%= number_to_currency(@order.total_price, unit: '€ ') %>

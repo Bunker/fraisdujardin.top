@@ -2,7 +2,8 @@
 
 This project is build out of the need to build an application to streamline and in a way automate the selling of extra vegetables in my garden to neighbours, friends and collegues.
 
-The basis of this application is the e-commerce tutorial by [envatotuts+][1]
+The basis of this application is the [e-commerce tutorial][2] by [envatotuts+][1]
+I adapted this code to my specific needs, if you are interested you can find the original code in their [github project][3]
 
 Version 1:
 --------
@@ -25,7 +26,9 @@ Version 6:
 ----------
 	- Let users vote what to plant in certain beds
 
-[1]: tutsplus.com
+[1]: http://www.tutsplus.com
+[2]: https://code.tutsplus.com/courses/build-a-store-with-a-payment-gateway-in-rails/lessons/bootstrap-our-rails-application
+[3]: https://github.com/tutsplus/rails_store_with_braintree/blob/master/app/assets/stylesheets/application.css
 
 
 <!-- ---------- Future ref -------------
@@ -38,8 +41,11 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
+	2.1.3
 * System dependencies
+
+Install Image magick when on Mac:
+	brew install graphicsmagick
 
 * Configuration
 

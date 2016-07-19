@@ -1,0 +1,11 @@
+Bonjour <%= @order.user.name %>,
+
+Merci pour votre réservation chez Frais du jardin. Votre réservation <%= @order.id %> sera être disponible demain à partir de 9h du matin.
+
+En desous vous trouvez les produits réservée pour vous:
+
+<%- @order.order_items.each do |item| %>
+	* <%= item.quantity %> <%= item.product.name %> (<%= number_to_currency(item.total_price, unit: '€ ') %>)
+<%- end %>
+
+Le total pour la réservation: <%= number_to_currency(@order.total_price, unit: '€ ') %>

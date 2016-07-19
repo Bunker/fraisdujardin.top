@@ -1,0 +1,12 @@
+-if @order_form.has_errors?
+	.panel.panel-danger
+		.panel-heading
+			%h4.panel-title There are some problems with your entered data, please review and correct them.
+		.panel-body
+			%ul
+			-@order_form.user.errors.full_messages.each do |error|
+				%li
+					%strong
+						User:
+					=error
+	
