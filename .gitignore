@@ -21,8 +21,5 @@
 .byebug_history
 
 # Ignore config files
-/config/environments/production.rb
 /config/environments/development.rb
-/config/database.yml
-/config/secrets.yml
 
