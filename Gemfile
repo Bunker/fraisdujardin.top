@@ -58,7 +58,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
 gem 'country_select'
-gem 'braintree'
+# gem 'braintree'
+gem 'devise-i18n'
 
 group :test do
   gem 'minitest-rails'
