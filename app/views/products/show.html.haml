@@ -2,7 +2,7 @@
   %h1= @product.name
   %p
     %strong Description:
-    = @product.description
+    = simple_format(@product.description)
   %p= number_to_currency(@product.price, unit: '€ ')
   %p 
     Quantity:
