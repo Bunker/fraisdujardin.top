@@ -9,7 +9,7 @@ class OrderMailer < ActionMailer::Base
 
 	def order_confirmation_admin order
 		@order = order
-		@admin = User.first.where(:admin => true)
+		@admin = User.first
 		mail to: @admin.email, subject: "New reservation (##{order.id} by ##{order.user.name}"
 	end
 

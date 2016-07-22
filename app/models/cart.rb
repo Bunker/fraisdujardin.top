@@ -27,6 +27,19 @@ class Cart
 		end
 	end
 
+	def decrement_quantity product_id
+		item = @items.find { |item| item.product_id == product_id }
+		if item.quantity > 1
+			item.decrement
+		else 
+			remove_item(product_id)
+		end
+	end
+
+	def remove_item product_id
+		@items.delete_if { |item| item.product_id == product_id }
+	end
+
 	def count
 		@items.length
 	end

@@ -9,6 +9,10 @@ class CartItem
 		@quantity = @quantity + 1
 	end
 
+	def decrement
+		@quantity = @quantity - 1
+	end
+
 	def product
 		Product.find product_id
 	end

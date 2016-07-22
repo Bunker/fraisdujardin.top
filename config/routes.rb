@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   
   resource :cart, only: [:show] do
   	post "add/:id", :as => "add", :action => "add"
-  	get :checkout
+  	post "remove/:id", :as => "remove", :action => "remove"
+    post "decrement/:id", :as => "decrement", :action => "decrement"
+    get :checkout
+  	get :clear
   end
 
   resources :orders, only: [ :index, :show, :create, :update ]

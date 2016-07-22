@@ -5,17 +5,23 @@
 			%td Quantity
 			%td Product
 			%td Price
+			%td
 
 	-@cart.items.each do |item|
 		%tr
-			%td=item.quantity
+			%td
+				=link_to "-", decrement_cart_path(item.product_id), method: :post, class: "btn"
+				=item.quantity 
+				=link_to "+", add_cart_path(item.product_id), method: :post, class: "btn"
 			%td
 				=image_tag item.product.image.thumb, height: 50
 				=link_to item.product.name, item.product
 			%td= number_to_currency(item.total_price, unit: '€ ')
+			%td=link_to "Remove item", remove_cart_path(item.product_id), method: :post, class: "btn btn-primary"
 
 %p.pull-right
 	%strong	Total:
 	=number_to_currency(@cart.total_price, unit: '€ ' )
 
 %p=link_to "Checkout", checkout_cart_path, class: "btn btn-primary"
+%p=link_to "Clear cart", clear_cart_path, class: "btn btn-primary"

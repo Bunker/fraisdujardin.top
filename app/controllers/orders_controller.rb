@@ -13,6 +13,8 @@ class OrdersController < ApplicationController
 
 		if @order_form.save
 			notify_user
+			notify_admin
+			session.delete(:cart)
 			redirect_to root_path, notice: "Thank you for your reservation, you'll receive an e-mail confirmation"
 		else
 			render "carts/checkout"
@@ -33,6 +35,10 @@ class OrdersController < ApplicationController
 	def notify_user
 		@order_form.user.send_reset_password_instructions
 		OrderMailer.order_confirmation(@order_form.order).deliver
+	end
+
+	def notify_admin
+		OrderMailer.order_confirmation_admin(@order_form.order).deliver
 	end
 
 	def notify_user_about_state
