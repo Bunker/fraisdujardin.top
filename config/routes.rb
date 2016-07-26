@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/FAQ'
+
+  get 'static_pages/About'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :products
   

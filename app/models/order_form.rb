@@ -5,8 +5,9 @@ class OrderForm
 	attr_writer :cart
 
 	def save
-		set_password_for_user
-
+		if !current_user
+			set_password_for_user
+		end
 		if valid?
 			persist
 			true
@@ -28,8 +29,12 @@ class OrderForm
 	end
 
 	def persist
-		user.save
-		@order = Order.create! user: user
+		if !current_user
+			user.save
+		else
+			user = current_user
+		end
+			@order = Order.create! user: user
 
 		build_order_items
 	end

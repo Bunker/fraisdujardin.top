@@ -1,6 +1,5 @@
 
 class CartsController < ApplicationController
-	before_action :initialize_cart
 
 	def add
 		@cart.add_item params[:id]

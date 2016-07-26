@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-	before_action :initialize_cart
 
 	def index
 		 @orders = Order.order(created_at: :desc).all
