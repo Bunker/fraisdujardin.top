@@ -97,5 +97,5 @@ Rails.application.configure do
     enable_starttls_auto: true,
   }
   config.action_mailer.default_url_options = {:host => 'fraisdujardin.top'}
-  config.I18n.locale = :fr
+  config.i18n.locale = :fr
 end
