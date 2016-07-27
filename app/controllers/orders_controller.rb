@@ -5,10 +5,17 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order_form = OrderForm.new(
-			user: User.new(order_params[:user]),
-			cart: @cart
-		)
+		if current_user
+			@order_form = OrderForm.new(
+				user: User.find(@current_user.id),
+				cart: @cart
+			)
+		else
+			@order_form = OrderForm.new(
+				user: User.new(order_params[:user]),
+				cart: @cart
+			)
+		end
 
 		if @order_form.save
 			notify_user
@@ -32,7 +39,9 @@ class OrdersController < ApplicationController
 	private
 
 	def notify_user
-		@order_form.user.send_reset_password_instructions
+		if !current_user
+			@order_form.user.send_reset_password_instructions
+		end
 		OrderMailer.order_confirmation(@order_form.order).deliver
 	end
 

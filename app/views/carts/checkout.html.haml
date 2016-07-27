@@ -20,23 +20,35 @@
 				%strong
 					=t('.Price_total')
 			%td=number_to_currency(@cart.total_price, unit: '€ ')
+
 =form_for @order_form, url: orders_path do |f|
 	=render 'orders/errors'
 	%h3=t(".Your_details")
-	=f.fields_for :user, f.object.user do |u|
-		.form-group
-			%p=u.text_field :name, placeholder: t(".Name"), class: "form-control input-lg"
-			%p
-				=u.text_field :email, placeholder: t(".Email"), class: "form-control"
-				%span.help-block=t('.Email_help')
+	-if !current_user
+		=f.fields_for :user, f.object.user do |u|
 			.form-group
-				.row
-					%p.col-md-6=u.text_field :address, placeholder: t(".Address"), class: "form-control"
-					%p.col-md-3=u.text_field :postal_code, placeholder: t(".Postal_code"), class: "form-control"
-					%p.col-md-3=u.text_field :city, placeholder: t(".City"), class: "form-control"
-				%p=u.country_select :country, { priority_countries: [ "BE" ] }, { class: "form-control" }
-	
+				%p=u.text_field :name, placeholder: t(".Name"), class: "form-control input-lg"
 				%p
-					=u.text_field :phone, class: "form-control", placeholder: t(".Phone")
-					%span.help-block=t(".Phone_help")
-		%p=f.submit t(".Place_order"), class: "btn btn_primary"
+					=u.text_field :email, placeholder: t(".Email"), class: "form-control"
+					%span.help-block=t('.Email_help')
+				.form-group
+					.row
+						%p.col-md-6=u.text_field :address, placeholder: t(".Address"), class: "form-control"
+						%p.col-md-3=u.text_field :postal_code, placeholder: t(".Postal_code"), class: "	form-control"
+						%p.col-md-3=u.text_field :city, placeholder: t(".City"), class: "form-control"
+					%p=u.country_select :country, { priority_countries: [ "BE" ] }, { class: "form-control" }
+		
+					%p
+						=u.text_field :phone, class: "form-control", placeholder: t(".Phone")
+						%span.help-block=t(".Phone_help")
+	-else
+		%address
+			%strong=t(".Name")
+			%strong : 
+			%strong=current_user.name
+			%br
+			=t(".Address")
+			\: 
+			=simple_format current_user.full_address
+		%p=link_to t(".Change_details"), edit_user_registration_path, class: "btn btn_primary"
+	%p=f.submit t(".Place_order"), class: "btn btn_primary"
