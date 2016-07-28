@@ -45,23 +45,27 @@ You can find the config variables under settings/reveal config variables:
 ## Config variables used:
 
 
-`DROPBOX_ACCESS_TOKEN
+```
+DROPBOX_ACCESS_TOKEN
 DROPBOX_ACCESS_TOKEN_SECRET
 DROPBOX_APP_KEY
 DROPBOX_APP_SECRET
 DROPBOX_USER_ID
 SMTP_USERNAME
 SMTP_PASSWORD
-SMTP_SERVER_ADDR`
+SMTP_SERVER_ADDR
+```
 
 ## Config for sendgrid:
 
 
 install the add-on on Heroku for Sendgrid, configure your account and fill in these config variables:
 
-`SMTP_USERNAME: sendgrid_username
+```
+SMTP_USERNAME: sendgrid_username
 SMTP_PASSWORD: sendgrid_password
-SMTP_SERVER_ADDR: smtp.sendgrid.net`
+SMTP_SERVER_ADDR: smtp.sendgrid.net
+```
 
 ## Config for dropbox:
 
@@ -85,35 +89,40 @@ replace the YOUR XXX with your credentials.
 
 follow the instructions on screen and you get a response like this:
 
-`
+```
 access_token: your dropbox access token
 access_token_secret: your dropbox acces token secret
 user_id: your dropbox user id
-`
+```
 Now for the last part, update the config variables in the Heroku settings:
 
-`
+```
 DROPBOX_ACCESS_TOKEN: your dropbox access token
 DROPBOX_ACCESS_TOKEN_SECRET: your dropbox access token secret
 DROPBOX_APP_KEY: your dropbox app key
 DROPBOX_APP_SECRET: your dropbox app secret
 DROPBOX_USER_ID: your dropbox user id
-`
+```
 
 ## Config for admin user:
 
 register a user, go to the heroku console by running:
 
-`heroku run -a YOUR HEROKU APP NAME console`
+```
+heroku run -a YOUR HEROKU APP NAME console
+```
 
 with till you see:
-`[irb(main)]:001.0>`
+```
+[irb(main)]:001.0>
+```
 
 now type: 
 
-`user = User.first
+```
+user = User.first
 user.update_attributes(:admin => true, :id => '1')
-`
+```
 
 
 
