@@ -92,7 +92,7 @@ Rails.application.configure do
     address: 'smtp.sendgrid.net',
     port: 587,
     user_name: '<%= ENV["SMTP_USERNAME"] %>',
-    password: '<%= ENV["SMTP_PASSWORD] %>',
+    password: '<%= ENV["SMTP_PASSWORD"] %>',
     domain: "fraisdujardin.top",
     authentication: "login",
     enable_starttls_auto: true,
