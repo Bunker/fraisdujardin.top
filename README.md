@@ -31,6 +31,92 @@ Version 6:
 [3]: https://github.com/tutsplus/rails_store_with_braintree/blob/master/app/assets/stylesheets/application.css
 
 
+# Installation on Heroku:
+
+I'm deploying through github master, which will always update the codebase to the newest accepted in master update.
+I've also installed the sendgrid add-on on Heroku, to be able to send mails.
+I've also installed the postgress add-on to be able to use the database on Heroku.
+
+
+All my variables are set in config variables in my production enviroment and are set in Heroku manually.
+
+You can find the config variables under settings/reveal config variables:
+
+## Config variables used:
+
+
+`DROPBOX_ACCESS_TOKEN
+DROPBOX_ACCESS_TOKEN_SECRET
+DROPBOX_APP_KEY
+DROPBOX_APP_SECRET
+DROPBOX_USER_ID
+SMTP_USERNAME
+SMTP_PASSWORD
+SMTP_SERVER_ADDR`
+
+## Config for sendgrid:
+
+
+install the add-on on Heroku for Sendgrid, configure your account and fill in these config variables:
+
+`SMTP_USERNAME: sendgrid_username
+SMTP_PASSWORD: sendgrid_password
+SMTP_SERVER_ADDR: smtp.sendgrid.net`
+
+## Config for dropbox:
+
+As Heroku does not allow uploads to their servers and remove files either after a new deploy or a fixed time period (atm 24h), I've chosen to use dropbox integration with the gem [carrierwave-dropbox][https://github.com/robin850/carrierwave-dropbox]
+
+Most part of the setup is done, however, you still need to do the following to make it work for you:
+
+Make a [dropbox][https://db.tt/ws8Z4SV8] account or login to your account and go to [create dropbox app][https://www.dropbox.com/developers/apps].
+
+1. Choose Dropbox api
+2. Choose App folder
+3. Give your app a name
+
+After confirming, you don't need to change any other options, just click on show app secret.
+
+Install the [heroku-toolbelt][https://toolbelt.heroku.com/] and in your terminal do following command:
+
+    heroku run - a YOUR HEROKU APP NAME rake dropbox:authorize APP_KEY=YOUR DROPBOX APP KEY APP_SECRET=YOUR DROPBOX APP SECRET ACCESS_TYPE=app_folder
+
+replace the YOUR XXX with your credentials.
+
+follow the instructions on screen and you get a response like this:
+
+`
+access_token: your dropbox access token
+access_token_secret: your dropbox acces token secret
+user_id: your dropbox user id
+`
+Now for the last part, update the config variables in the Heroku settings:
+
+`
+DROPBOX_ACCESS_TOKEN: your dropbox access token
+DROPBOX_ACCESS_TOKEN_SECRET: your dropbox access token secret
+DROPBOX_APP_KEY: your dropbox app key
+DROPBOX_APP_SECRET: your dropbox app secret
+DROPBOX_USER_ID: your dropbox user id
+`
+
+## Config for admin user:
+
+register a user, go to the heroku console by running:
+
+`heroku run -a YOUR HEROKU APP NAME console`
+
+with till you see:
+`[irb(main)]:001.0>`
+
+now type: 
+
+`user = User.first
+user.update_attributes(:admin => true, :id => '1')
+`
+
+
+
 <!-- ---------- Future ref -------------
 
 # README
