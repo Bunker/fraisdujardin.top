@@ -96,6 +96,6 @@ Rails.application.configure do
     authentication: "login",
     enable_starttls_auto: true,
   }
-  config.action_mailer.default_url_options = {:host => 'fraisdujardin.top'}
+  #config.action_mailer.default_url_options = {:host => 'fraisdujardin.top'}
   config.i18n.locale = :fr
 end
