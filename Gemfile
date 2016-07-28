@@ -69,6 +69,7 @@ gem 'devise'
 gem 'country_select'
 # gem 'braintree'
 gem 'devise-i18n'
+gem 'carrierwave-dropbox'
 
 
 
