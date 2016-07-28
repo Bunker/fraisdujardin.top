@@ -69,11 +69,11 @@ SMTP_SERVER_ADDR: smtp.sendgrid.net
 
 ## Config for dropbox:
 
-As Heroku does not allow uploads to their servers and remove files either after a new deploy or a fixed time period (atm 24h), I've chosen to use dropbox integration with the gem [carrierwave-dropbox][https://github.com/robin850/carrierwave-dropbox]
+As Heroku does not allow uploads to their servers and remove files either after a new deploy or a fixed time period (atm 24h), I've chosen to use dropbox integration with the gem [carrierwave-dropbox][4]
 
 Most part of the setup is done, however, you still need to do the following to make it work for you:
 
-Make a [dropbox][https://db.tt/ws8Z4SV8] account or login to your account and go to [create dropbox app][https://www.dropbox.com/developers/apps].
+Make a [dropbox][5] account or login to your account and go to [create dropbox app][6].
 
 1. Choose Dropbox api
 2. Choose App folder
@@ -81,7 +81,7 @@ Make a [dropbox][https://db.tt/ws8Z4SV8] account or login to your account and go
 
 After confirming, you don't need to change any other options, just click on show app secret.
 
-Install the [heroku-toolbelt][https://toolbelt.heroku.com/] and in your terminal do following command:
+Install the [heroku-toolbelt][7] and in your terminal do following command:
 
     heroku run - a YOUR HEROKU APP NAME rake dropbox:authorize APP_KEY=YOUR DROPBOX APP KEY APP_SECRET=YOUR DROPBOX APP SECRET ACCESS_TYPE=app_folder
 
@@ -156,3 +156,7 @@ Install Image magick when on Mac:
 
 * ...
  -->
+ [4]: https://github.com/robin850/carrierwave-dropbox
+ [5]: https://db.tt/ws8Z4SV8
+ [6]: https://www.dropbox.com/developers/apps
+ [7]: https://toolbelt.heroku.com/
